@@ -1,0 +1,33 @@
+{
+    "name": "swiftearnprime",
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/server.js"
+        }
+    ],
+
+    "headers": [
+        {
+          "source": "/api/(.*)",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "/$1"
+        }
+      ]
+}
